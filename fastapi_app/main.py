@@ -15,3 +15,9 @@ static_dir=os.path.abspath(os.path.join(os.path.dirname(__file__),"static"))
 app.mount("static",StaticFiles(directory=static_dir))
 templates=Jinja2Templates(directory=templates_dir)
 
+users={"admin":"1234"}
+
+@app.get("/")
+
+async def home(request:Request):
+    return templates.TemplateResponse("home.html",{"request":request},status_code=200)
